@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { quoteAPI } from "../../api/quote.api";
 
 export interface Quote {
   id: number;
@@ -29,6 +30,18 @@ const quoteSlice = createSlice({
     },
   },
 });
+
+// create asyncThunk for fetching all quotes
+export const getQuotes = createAsyncThunk(
+  "quotes/get-all",
+  async (_value, thunkAPI) => {
+    const response = await thunkAPI.dispatch(
+      quoteAPI.endpoints.getQuotes.initiate({})
+    );
+    console.log(response.data);
+    // thunkAPI.dispatch(setQuotes(data));
+  }
+);
 
 export const dummyQuotes = [
   {
