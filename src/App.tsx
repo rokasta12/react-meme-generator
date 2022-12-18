@@ -8,12 +8,6 @@ import Home from "./views/Home";
 import Memes from "./views/Memes";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const dispatch = useAppDispatch();
-
-  const loadQuotes = () => {
-    dispatch(setQuotes(dummyQuotes));
-  };
   return (
     <Routes>
       <Route path="/" element={<Home />} />
