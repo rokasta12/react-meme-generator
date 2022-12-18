@@ -15,11 +15,13 @@ export default function Home({}: Props) {
   return (
     <div>
       <div className="App">
-        <h1>Vite + React</h1>
-        <button onClick={() => loadQuotes()}>Load Quotes</button>
-        <Link to={"/memes"}>
-          <button>Go to memes</button>
-        </Link>
+        <h1>Meme + Generator = 🙂</h1>
+        <div className="my-6 flex justify-center gap-4">
+          <button onClick={() => loadQuotes()}>Load Quotes</button>
+          <Link to={"/memes"}>
+            <button>Go to memes</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

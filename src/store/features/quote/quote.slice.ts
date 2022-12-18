@@ -38,7 +38,7 @@ export const getQuotes = createAsyncThunk(
     const response = await thunkAPI.dispatch(
       quoteAPI.endpoints.getQuotes.initiate({})
     );
-    console.log(response.data);
+    // console.log(response.data);
     // thunkAPI.dispatch(setQuotes(data));
   }
 );
