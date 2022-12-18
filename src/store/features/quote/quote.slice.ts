@@ -37,9 +37,9 @@ const quoteSlice = createSlice({
 export const getQuotes = createAsyncThunk(
   "quotes/get-all",
   async (_value, thunkAPI) => {
-    const response = await thunkAPI.dispatch(
+    /*     const response = await thunkAPI.dispatch(
       quoteAPI.endpoints.getQuotes.initiate({})
-    );
+    ); */
     // console.log(response.data);
     // thunkAPI.dispatch(setQuotes(data));
   }
