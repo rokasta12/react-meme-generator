@@ -2,17 +2,18 @@ import { Link } from "react-router-dom";
 import { MemeCard, MemeCardList } from "../components/MemeCard";
 import QuoteCard from "../components/QuoteCard";
 import { useGetMemeImagesQuery } from "../store/api/neko.api";
+import { dummyData, useGetQuotesQuery } from "../store/api/quote.api";
 import { setSelectedQuoteByID } from "../store/features/quote/quote.slice";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 
 type Props = {};
 
 export default function Memes({}: Props) {
-  const { quotes, selectedQuote } = useAppSelector((state) => state.quote);
+  const { selectedQuote, quotes } = useAppSelector((state) => state.quote);
   const dispatch = useAppDispatch();
 
-  function setSelectedQuote(id: number) {
-    dispatch(setSelectedQuoteByID(id));
+  function setSelectedQuote(q: string) {
+    dispatch(setSelectedQuoteByID(q));
   }
   const memeImages = useGetMemeImagesQuery();
 
@@ -25,19 +26,19 @@ export default function Memes({}: Props) {
         </Link>
       </div>
       <div>{memeImages.isLoading && <div>Loading...</div>}</div>
-      <div >
+      <div>
         {memeImages.isSuccess && (
           <MemeCardList memes={memeImages.data?.results} />
         )}
       </div>
-      <div>
+      <div className="flex flex-wrap gap-4">
         {quotes.map((quote) => {
           return (
             <QuoteCard
               onClick={setSelectedQuote}
               quote={quote}
-              key={quote.id}
-              isSelected={selectedQuote?.id === quote.id}
+              key={quote.q}
+              isSelected={selectedQuote?.q === quote.q}
             />
           );
         })}

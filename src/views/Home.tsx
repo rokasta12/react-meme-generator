@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { dummyData } from "../store/api/quote.api";
 import { dummyQuotes, setQuotes } from "../store/features/quote/quote.slice";
 import { useAppDispatch } from "../store/hooks";
 
@@ -9,7 +10,7 @@ export default function Home({}: Props) {
   const dispatch = useAppDispatch();
 
   const loadQuotes = () => {
-    dispatch(setQuotes(dummyQuotes));
+    dispatch(setQuotes(dummyData));
   };
 
   return (

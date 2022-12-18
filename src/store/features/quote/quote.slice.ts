@@ -2,8 +2,10 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { quoteAPI } from "../../api/quote.api";
 
 export interface Quote {
-  id: number;
-  description: string;
+  q: string;
+  a: string;
+  c: string;
+  h: string;
 }
 
 interface QuoteState {
@@ -23,9 +25,9 @@ const quoteSlice = createSlice({
     setQuotes(state, action: PayloadAction<Quote[]>) {
       state.quotes = action.payload;
     },
-    setSelectedQuoteByID(state, action: PayloadAction<number>) {
+    setSelectedQuoteByID(state, action: PayloadAction<string>) {
       state.selectedQuote = state.quotes.find(
-        (quote) => quote.id === action.payload
+        (quote) => quote.q === action.payload
       )!;
     },
   },
