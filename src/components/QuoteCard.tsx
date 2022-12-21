@@ -13,7 +13,7 @@ export default function QuoteCard(props: Props) {
   return (
     <div
       onClick={() => onClick(quote.q)}
-      className={`my-4  bg-slate-900 w-96 px-3 py-6 rounded-md text-left
+      className={`my-4 bg-slate-200 dark:bg-slate-900 w-96 px-3 py-6 rounded-md text-left
        ${
          isSelected ? "border-2 border-blue-500 border-solid" : "border-none"
        }} hover:scale-105 cursor-pointer transition ease-in-out
